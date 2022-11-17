@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { GeneralService } from './../../../../services/general.service';
+import { Component } from '@angular/core';
 import { UserLogin } from '../../types/user';
+import { AuthService } from '../../service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
 })
-export class SigninComponent implements OnInit {
+export class SigninComponent {
   user: UserLogin = {
     email: '',
     password: '',
@@ -13,11 +16,23 @@ export class SigninComponent implements OnInit {
 
   logoPath: string = '../../../../../assets/img/logo.png';
 
-  constructor() {}
+  get isLoading() {
+    return this.authService.isLoading;
+  }
 
-  ngOnInit(): void {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private generalService: GeneralService
+  ) {
+    if (!!localStorage.getItem('token')) {
+      this.router.navigate(['']);
+    }
+  }
 
   signin() {
-    console.log(this.user);
+    this.authService.login(this.user);
+    this.router.navigate(['']);
+    this.generalService
   }
 }

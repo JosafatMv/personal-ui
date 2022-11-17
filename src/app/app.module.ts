@@ -9,6 +9,7 @@ import { materialModules } from './types/material-modules';
 import { AppRouterModule } from './routers/app-rotuer.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { PersonalModule } from './modules/personal/personal.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, NavigationComponent],
@@ -17,6 +18,7 @@ import { PersonalModule } from './modules/personal/personal.module';
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule,
+    HttpClientModule,
     AuthModule,
     PersonalModule,
     ...materialModules,
