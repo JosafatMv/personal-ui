@@ -5,29 +5,28 @@ import { MainPersonalComponent } from '../modules/personal/pages/main-personal/m
 import { AppComponent } from '../app.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: MainPersonalComponent,
-    pathMatch: 'full',
-  },
-  {
-    path: 'personal',
-    component: MainPersonalComponent,
-    pathMatch: 'full',
-  },
-  {
-    path: 'auth',
-    component: SigninComponent,
-  },
-  {
-    path: '**',
-    redirectTo: '',
-  },
+	{
+		path: '',
+		component: MainPersonalComponent,
+		pathMatch: 'full',
+	},
+	{
+		path: 'personal',
+		component: MainPersonalComponent,
+	},
+	{
+		path: 'auth',
+		component: SigninComponent,
+	},
+	{
+		path: '**',
+		redirectTo: '',
+	},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-  bootstrap: [AppComponent],
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule],
+	bootstrap: [AppComponent],
 })
 export class AppRouterModule {}

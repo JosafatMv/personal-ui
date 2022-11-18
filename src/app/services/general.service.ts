@@ -1,22 +1,40 @@
 import { Injectable } from '@angular/core';
 
+interface Session {
+	logged: boolean;
+	token: string | null;
+}
+
 @Injectable({
-  providedIn: 'root',
+	providedIn: 'root',
 })
 export class GeneralService {
-  private session = {
-    logged: false,
-  };
+	private session: Session = {
+		logged: false,
+		token: null,
+	};
 
-  get isLogged() {
-    return this.session.logged;
-  }
+	constructor() {
+		this.session.logged = !!localStorage.getItem('token');
+		this.session.token = localStorage.getItem('token')
+			? localStorage.getItem('token')
+			: null;
+		console.log(this.token);
+	}
 
-  set isLogged(isLogged) {
-    this.session.logged = isLogged;
-  }
+	get isLogged() {
+		return this.session.logged;
+	}
 
-  constructor() {
-    this.session.logged = !!localStorage.getItem('token');
-  }
+	set isLogged(value) {
+		this.session.logged = value;
+	}
+
+	get token() {
+		return this.session.token;
+	}
+
+	set token(value) {
+		this.session.token = value;
+	}
 }

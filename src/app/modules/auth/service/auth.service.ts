@@ -6,38 +6,40 @@ import { Router } from '@angular/router';
 import { GeneralService } from '../../../services/general.service';
 
 @Injectable({
-  providedIn: 'root',
+	providedIn: 'root',
 })
 export class AuthService {
-  private loading: boolean = false;
-  get isLoading() {
-    return this.loading;
-  }
-  constructor(
-    private readonly http: HttpClient,
-    private router: Router,
-    private generalService: GeneralService
-  ) {}
+	private loading: boolean = false;
+	get isLoading() {
+		return this.loading;
+	}
+	constructor(
+		private readonly http: HttpClient,
+		private router: Router,
+		private generalService: GeneralService
+	) {}
 
-  login(payload: UserLogin): void {
-    this.loading = true;
-    this.http
-      .post<any>('http://localhost:4000/api/auth/', payload, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-      .pipe(
-        catchError((error) => {
-          this.loading = false;
-          return error;
-        })
-      )
-      .subscribe((response) => {
-        localStorage.setItem('token', response);
-        this.loading = false;
-        // this.generalService.isLogged(true);
-        this.router.navigate(['./']);
-      });
-  }
+	login(payload: UserLogin): void {
+		this.loading = true;
+		this.http
+			.post<any>('http://localhost:3010/api/auth/', payload, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			})
+			.pipe(
+				catchError((error) => {
+					this.loading = false;
+					return error;
+				})
+			)
+			.subscribe((response) => {
+				this.generalService.token = response.token;
+				localStorage.setItem('token', response.token);
+				this.generalService.isLogged = true;
+				console.log(this.generalService.token);
+				this.loading = false;
+				this.router.navigate(['./']);
+			});
+	}
 }

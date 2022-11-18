@@ -1,29 +1,44 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
+          The actual rendered columns are set as a property on the row definition" -->
 
   <!-- Position Column -->
-  <ng-container matColumnDef="position">
+  <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef>No.</th>
-    <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+    <td mat-cell *matCellDef="let personal">{{ personal.id }}</td>
   </ng-container>
 
   <!-- Name Column -->
-  <ng-container matColumnDef="name">
+  <ng-container matColumnDef="nombre">
     <th mat-header-cell *matHeaderCellDef>Name</th>
-    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    <td mat-cell *matCellDef="let personal">{{ personal.nombre }}</td>
   </ng-container>
 
   <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <th mat-header-cell *matHeaderCellDef>Weight</th>
-    <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
+  <ng-container matColumnDef="apellidoP">
+    <th mat-header-cell *matHeaderCellDef>Surname</th>
+    <td mat-cell *matCellDef="let personal">{{ personal.apellidoP }}</td>
   </ng-container>
 
   <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef>Symbol</th>
-    <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+  <ng-container matColumnDef="apellidoM">
+    <th mat-header-cell *matHeaderCellDef>Lastname</th>
+    <td mat-cell *matCellDef="let personal">{{ personal.apellidoM }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="puesto">
+    <th mat-header-cell *matHeaderCellDef>Position</th>
+    <td mat-cell *matCellDef="let personal">{{ personal.puesto }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="sueldo">
+    <th mat-header-cell *matHeaderCellDef>Salary</th>
+    <td mat-cell *matCellDef="let personal">{{ personal.sueldo }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="fecNac">
+    <th mat-header-cell *matHeaderCellDef>Birthday</th>
+    <td mat-cell *matCellDef="let personal">{{ personal.fecNac }}</td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
