@@ -34,10 +34,8 @@ export class AuthService {
 				})
 			)
 			.subscribe((response) => {
-				this.generalService.token = response.token;
 				localStorage.setItem('token', response.token);
 				this.generalService.isLogged = true;
-				console.log(this.generalService.token);
 				this.loading = false;
 				this.router.navigate(['./']);
 			});

@@ -11,7 +11,6 @@ import { GeneralService } from '../../services/general.service';
 	styleUrls: ['./navigation.component.css'],
 })
 export class NavigationComponent {
-	// Esto se borra
 	logoPath: string = '../../../../../assets/img/logo.png';
 
 	get session() {
