@@ -44,10 +44,18 @@ export class PersonalService {
 			});
 	}
 
-	constructor(
-		private readonly http: HttpClient,
-		private generalService: GeneralService
-	) {}
+	findAllPositions() {
+		this.loading = true;
+		return this.http.get<any>(`${APP_URL}api/position/`);
+	}
+
+	save(person: Personal) {
+		this.loading = true;
+		return this.http.post<any>(`${APP_URL}api/personal/`, person);
+		
+	}
+
+	constructor(private readonly http: HttpClient) {}
 
 	// getPersonal(): Observable<any> {
 	// 	return this.http.get<any>('http://localhost:3010/api/personal/', {

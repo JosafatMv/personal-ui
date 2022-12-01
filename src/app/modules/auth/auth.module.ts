@@ -5,8 +5,8 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { materialModules } from 'src/app/types/material-modules';
 
 @NgModule({
-  declarations: [SigninComponent],
-  imports: [CommonModule, FormsModule, materialModules],
-  exports: [SigninComponent],
+	declarations: [SigninComponent],
+	imports: [CommonModule, FormsModule, ...materialModules],
+	exports: [SigninComponent],
 })
 export class AuthModule {}
