@@ -68,7 +68,7 @@ export class MainPersonalComponent implements OnInit {
 			disableClose: true,
 		});
 		modalRef.afterClosed().subscribe((result: any) => {
-			console.log('closed', result);
+			this.getAll();
 		});
 	}
 
